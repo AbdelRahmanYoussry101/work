@@ -1,0 +1,4 @@
+git init
+rm -f ./.git/index.lock
+git commit -m name
+

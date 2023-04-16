@@ -1,14 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner x  = new Scanner(System.in);
+        int n= x.nextInt();
+        boolean[] Not_primes= new boolean[n+1];
+        ArrayList<Integer> primes = new ArrayList<Integer>();
 
-        Account account = new Account(1122, 20000);
-        account.setAnnualInterestRate(4.5);
+        Not_primes[0]=Not_primes[1]=true;
 
-        account.withdraw(2500);
-        account.deposit(3000);
 
-        System.out.printf("Balance: $%.2f%n", account.getBalance());
-        System.out.printf("Monthly interest: $%.2f%n", account.getMonthlyInterest());
-        System.out.printf("Date created: %s%n", account.getDateCreated());
+        for(int i=2;i<=n;i++){
+            if(!Not_primes[i]){
+                primes.add(i);
+            }
+            for(int j=0;j<primes.stream().count()&&i* primes.get(j)< n;j++){
+                Not_primes[i* primes.get(j)]=true;
+                if(i%primes.get(j)==0){
+                    break;
+                }
+            }
+
+        }
+        for(int i=0;i<primes.stream().count();i++){
+            System.out.println(primes.get(i));
+        }
+
+
+
     }
 }

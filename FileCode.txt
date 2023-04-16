@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        File M_F = new File("Secter_mess.txt");
+
+        if(M_F.exists()){
+            try {
+                Scanner R_M_F = new Scanner(M_F);
+                int x;
+                while (R_M_F.hasNext()) {
+                    if (R_M_F.hasNextInt()) {
+                        x = R_M_F.nextInt();
+                        System.out.println(x);
+                    } else {
+                        R_M_F.next();
+                    }
+                }
+
+            }
+            catch (IOException e){
+                System.out.println("IO Exception");
+            }
+
+        }else{
+            System.out.println("it  NOT exists");
+        }
+
+    }
+}
