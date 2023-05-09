@@ -1,53 +1,26 @@
-import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Vector;
-import java.util.Collections;
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        int[] p = {2,3,1,8,5,4,7,6};
-        //Desending Order array
-        int[] q ={8,7,6,5,4,3,2,1};
-        //string input
-        int[] BI ={0,1,1,1,0,0,0,1};
-
-        HashMap<Integer,Integer> Map = new HashMap<>();
-
-
-
-        Vector<Integer> Liked = new Vector<>();
-        Vector<Integer> Disliked = new Vector<>();
-
-
-        for(int i=0;i<p.length;i++){
-            if(BI[i]==0){
-                Disliked.add(p[i]);
-            }else {
-                Liked.add(p[i]);
+        Scanner Scan1 = new Scanner(System.in);
+        long x= Scan1.nextInt();
+        long m= Scan1.nextInt();
+        long N=0;
+        while (x-->1){
+            if(N<m){
+                N=m;
             }
-            Map.put(p[i],i);
+            if(Scan1.hasNext()) {
+                m = Scan1.nextInt();
+            }
         }
-        /*
-        This is for optimization only does not impact the code
-        Collections.sort(Liked);
-        Collections.sort(Disliked);
-         */
-        Collections.sort(Liked, Collections.reverseOrder());
-        Collections.sort(Disliked, Collections.reverseOrder());
-
-        int i;
-        for(i=0;i<Liked.size();i++){
-            p[Map.get(Liked.elementAt(i))]=q[i];
+        long  y=1;
+        long sum=(y/2)*(y+1);
+        if(N!=1){
+            while(sum<N) {
+                y = y + 1;
+                sum = (y / 2) * (y + 1);
+            }
         }
-
-        for(int j=0;j< Disliked.size();j++){
-            p[Map.get(Disliked.elementAt(j))]=q[i];
-            i++;
-        }
-
-        for(int x=0;x< q.length;x++){
-            System.out.print(p[x]+" ");
-        }
-
-
+        System.out.println(y);
     }
 }
